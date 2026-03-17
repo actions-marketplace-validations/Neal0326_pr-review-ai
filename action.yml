@@ -1,0 +1,34 @@
+name: PR Review AI
+description: AI-powered GitHub PR reviewer that summarizes changes, identifies issues, and provides actionable feedback.
+author: OpenAI Codex
+
+inputs:
+  pr-url:
+    description: Full GitHub pull request URL to review.
+    required: true
+  github-token:
+    description: GitHub token used to read pull request details, files, and comments.
+    required: true
+  openai-api-key:
+    description: OpenAI API key used to generate the PR review.
+    required: true
+  model:
+    description: OpenAI model to use for the PR review.
+    required: false
+    default: gpt-4.1-mini
+
+outputs:
+  review-json:
+    description: JSON review result containing summary, feedback, and status.
+  status:
+    description: Review process status.
+  message:
+    description: Human-readable message describing the review result.
+
+runs:
+  using: node20
+  main: dist/index.js
+
+branding:
+  color: blue
+  icon: git-pull-request
